@@ -34,7 +34,7 @@ Brief summary of the steps:
 
 # Dataset
 
-The chosen dataset is the fire incidents data of the city of San Francisco in the US from 1-Jan-2003 to 22-April-2022. 
+The chosen dataset was the fire incidents data of the city of San Francisco in the US from 1-Jan-2003 to 22-April-2022. 
 
 It includes a summary of each (non-medical) incident to which the SF Fire Department responded. Each incident record includes, the incident number, the battalion whihc responded to the incident, the incident date, the timestamp of alarm, arrival and closure of the incident, among others. 
 
