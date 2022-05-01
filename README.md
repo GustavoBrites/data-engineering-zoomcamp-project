@@ -51,14 +51,13 @@ For this project I decided to use the following tools:
 - Transformations: SQL (Pyspark will be used in the future with more time and one less technical error!) 
 - Visualization: Google Data Studio
 
-# Steps for Project Reproduction (includes some explanations)
+# Steps for Project Reproduction
 
 **Recommendation:** Clone of the repo for easier reproduction. Also, I used MINGW64 in Windows 10 as Bash.  
 
 ## Step 1
 Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
-## Step 2
-### Setup of GCP 
+## Step 2: Setup of GCP 
 - Creation of new GCP project. Attention: The Project ID is important. 
 - Go to `IAM & Admin > Service accounts > Create service account`, provide a service account name and grant the roles `Viewer`, `BigQuery Admin`, `Storage Admin`, `Storage Object Admin`. 
 - Download locally, rename it to `google_credentials.json`. 
@@ -93,21 +92,24 @@ terraform apply -var="project=<your-gcp-project-id>"
 ### Execution
 4.0. In `docker-compose.yaml`, change the environment variables `GCP_PROJECT_ID`,`GCP_GCS_BUCKET` and the line  `C:/Users/Gustavo/.google/credentials/:/.google/credentials:ro` regarding the volume to your own setup values. 
 
-**4.1.** Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
+**1.** Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
     ```bash
     docker-compose build
     ```
-**4.2.** Initialize the configurations
+    
+**2.** Initialize the configurations
     ```bash
     docker-compose up airflow-init
     ```
-**4.3.** Run Airflow
+    
+**3.** Run Airflow
     ```bash
     docker-compose up -d
     ```
-**4.4.** Browse `localhost:8080` to access the Airflow web UI. The default credentials are `airflow`/`airflow` (not a production-ready setup). These can be modified by searching for `_AIRFLOW_WWW_USER_USERNAME` and `_AIRFLOW_WWW_USER_PASSWORD` inside the `docker-compose.yaml` file.
+    
+**4.** Browse `localhost:8080` to access the Airflow web UI. The default credentials are `airflow`/`airflow` (not a production-ready setup). These can be modified by searching for `_AIRFLOW_WWW_USER_USERNAME` and `_AIRFLOW_WWW_USER_PASSWORD` inside the `docker-compose.yaml` file.
 
-**4.5.** Turn on the DAG and trigger it on the web UI or wait for its scheduled run (once a day). After the run is completed, shut down the container by running the command:
+**5.** Turn on the DAG and trigger it on the web UI or wait for its scheduled run (once a day). After the run is completed, shut down the container by running the command:
 ```bash
 docker-compose down
 ```
