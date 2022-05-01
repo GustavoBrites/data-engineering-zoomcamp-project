@@ -39,7 +39,7 @@ The chosen dataset was the fire incidents data of the city of San Francisco in t
 
 It includes a summary of each (non-medical) incident to which the SF Fire Department responded. Each incident record includes, the incident number, the battalion whihc responded to the incident, the incident date, the timestamp of alarm, arrival and closure of the incident, among others. 
 
-It is available for [download as a csv file](https://data.sfgov.org/api/views/wr8u-xric/rows.csv?accessType=DOWNLOAD) and for [consultation](https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric) where it is also provided a [data dictionary](https://data.sfgov.org/api/views/wr8u-xric/files/54c601a2-63f1-4b27-a79d-f484c620f061?download=true&filename=FIR-0001_DataDictionary_fire-incidents.xlsx). As of 24 of April of 2022, this dataset is updated daily.
+It is available for [download as a csv file](https://data.sfgov.org/api/views/wr8u-xric/rows.csv?accessType=DOWNLOAD) and for [consultation](https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric) where it is also provided a [data dictionary](https://data.sfgov.org/api/views/wr8u-xric/files/54c601a2-63f1-4b27-a79d-f484c620f061?download=true&filename=FIR-0001_DataDictionary_fire-incidents.xlsx). As of 24-April-2022, this dataset is updated daily.
 
 # Technologies Used
 
@@ -73,7 +73,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.j
 
 ## Step 3: Creation of a GCP Infrastructure
 - [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- Change default variables "project", "region", "BQ_DATASET" in `variables.tf` (the file contains descriptions explaining these variables)
+- Change default variables `project`, `region`, `BQ_DATASET` in `variables.tf` (the file contains descriptions explaining these variables)
 - Run the following commands on bash:
 
 ```shell
@@ -128,7 +128,10 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 - `avg_arrival_time_secs` with the formula `AVG(arrival_time_secs)`
 - `avg_resolution_time_secs` with the formula `AVG(resolution_time_secs)`
 
+
 # Summary of DAG of Data Pipeline and decisions regarding transformations
+
+
 
 ## Data Pipeline
 - Download of csv file containing the data;
@@ -142,9 +145,9 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 
 The transformations made were the selection of certain columns and creation of new ones (time diferencies).
 
-It is known that tables with less than 1GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
+It is known that tables with less than 1 GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
 
-As of 24-April-22, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
+As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
 *Pratical example*
 Creating for example a clustered table by battalion...
@@ -180,7 +183,8 @@ Solution for the questions:
 - Which battalion had the lowest average arrival time to the incidents? **B01**
 - Which battalion had the lowest average incident resolution time? **B01**
 
-*Useful information*: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24 of April of 2022, this dataset is updated daily. 
+*Useful information*: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24-April-2022, this dataset is updated daily. 
+
 
 
 **A special thank you to [DataTalks.Club](https://datatalks.club) for providing this incredible course! Also, thank you to the amazing slack community!**
