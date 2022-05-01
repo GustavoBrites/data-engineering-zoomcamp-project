@@ -161,11 +161,11 @@ Cluster BY
 SELECT * FROM buoyant-valve-347911.fire_all.fire_external_table;
 ```
 
-...makes the query consume more data
-![Dashboard](/imgs/clustered_table.PNG)
+...makes the query consume more data...
+![Dashboard](/imgs/clustered_table.jpg)
 
 than performing it on the not clustered table.
-![Dashboard](/imgs/normal_table.PNG)
+![Dashboard](/imgs/normal_table.jpg)
 
 
 
