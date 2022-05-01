@@ -39,7 +39,7 @@ The chosen dataset was the fire incidents data of the city of San Francisco in t
 
 It includes a summary of each (non-medical) incident to which the SF Fire Department responded. Each incident record includes, the incident number, the battalion whihc responded to the incident, the incident date, the timestamp of alarm, arrival and closure of the incident, among others. 
 
-It is available for [download as a csv file]("https://data.sfgov.org/api/views/wr8u-xric/rows.csv?accessType=DOWNLOAD") and for [consultation](https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric) where it is also provided a [data dictionary](https://data.sfgov.org/api/views/wr8u-xric/files/54c601a2-63f1-4b27-a79d-f484c620f061?download=true&filename=FIR-0001_DataDictionary_fire-incidents.xlsx). As of 24 of April of 2022, this dataset is updated daily.
+It is available for [download as a csv file](https://data.sfgov.org/api/views/wr8u-xric/rows.csv?accessType=DOWNLOAD) and for [consultation](https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric) where it is also provided a [data dictionary](https://data.sfgov.org/api/views/wr8u-xric/files/54c601a2-63f1-4b27-a79d-f484c620f061?download=true&filename=FIR-0001_DataDictionary_fire-incidents.xlsx). As of 24 of April of 2022, this dataset is updated daily.
 
 # Technologies Used
 
