@@ -150,7 +150,7 @@ It is known that tables with less than 1 GB don't show significant improvement w
 
 As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
-*Pratical example*
+*Pratical example:*
 
 Creating for example a clustered table by battalion...
 
@@ -186,8 +186,7 @@ Solution for the questions:
 - Which battalion had the lowest average arrival time to the incidents? **B01**
 - Which battalion had the lowest average incident resolution time? **B01**
 
-*Useful information*
-
+*Useful information:*
 The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24-April-2022, this dataset is updated daily. 
 
 
