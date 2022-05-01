@@ -70,7 +70,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.j
    * https://console.cloud.google.com/apis/library/iam.googleapis.com
    * https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
 
-**3.** Creation of a GCP Infrastructure:
+## Step 3: Creation of a GCP Infrastructure
 - [Install Terraform] (https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - Change default variables "project", "region", "BQ_DATASET" in `variables.tf` (the file contains descriptions explaining these variables)
 - Run the following commands on bash:
@@ -93,16 +93,19 @@ terraform apply -var="project=<your-gcp-project-id>"
 4.0. In `docker-compose.yaml`, change the environment variables `GCP_PROJECT_ID`,`GCP_GCS_BUCKET` and the line  `C:/Users/Gustavo/.google/credentials/:/.google/credentials:ro` regarding the volume to your own setup values. 
 
 **1.** Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
+
     ```bash
     docker-compose build
     ```
     
-**2.** Initialize the configurations
+**2.** Initialize the configurations:
+
     ```bash
     docker-compose up airflow-init
     ```
     
-**3.** Run Airflow
+**3.** Run Airflow:
+
     ```bash
     docker-compose up -d
     ```
@@ -110,9 +113,11 @@ terraform apply -var="project=<your-gcp-project-id>"
 **4.** Browse `localhost:8080` to access the Airflow web UI. The default credentials are `airflow`/`airflow` (not a production-ready setup). These can be modified by searching for `_AIRFLOW_WWW_USER_USERNAME` and `_AIRFLOW_WWW_USER_PASSWORD` inside the `docker-compose.yaml` file.
 
 **5.** Turn on the DAG and trigger it on the web UI or wait for its scheduled run (once a day). After the run is completed, shut down the container by running the command:
+
 ```bash
 docker-compose down
 ```
+
 **[Extra Explanations](./airflow/extraexplanations.md)** (Summary of DAG of Data Pipeline and decisions regarding transformations)
 
 **5.**  
