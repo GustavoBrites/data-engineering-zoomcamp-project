@@ -146,7 +146,7 @@ The transformations made were the selection of certain columns and creation of n
 
 It is known that tables with less than 1 GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
 
-As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
+As of 24-April-2022, the dataset has a size of ~ 207 MB, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
 *Pratical example:*
 
