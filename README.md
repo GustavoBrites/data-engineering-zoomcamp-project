@@ -58,6 +58,7 @@ For this project I decided to use the following tools:
 
 ## Step 1
 Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
+
 ## Step 2: Setup of GCP 
 - Creation of new GCP project. Attention: The Project ID is important. 
 - Go to `IAM & Admin > Service accounts > Create service account`, provide a service account name and grant the roles `Viewer`, `BigQuery Admin`, `Storage Admin`, `Storage Object Admin`. 
@@ -150,6 +151,7 @@ It is known that tables with less than 1 GB don't show significant improvement w
 As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
 *Pratical example*
+
 Creating for example a clustered table by battalion...
 
 ```sql
@@ -169,9 +171,10 @@ than performing it on the not clustered table.
 
 # Dashboard
 
+Take a look into the finished dashboard [here](https://datastudio.google.com/s/j2PER0kkXhs).
+
 ![Dashboard](/imgs/dashboard.PNG)
 
-Take a look into the finished dashboard [here](https://datastudio.google.com/s/j2PER0kkXhs).
 
 # Conclusion 
 
@@ -183,7 +186,9 @@ Solution for the questions:
 - Which battalion had the lowest average arrival time to the incidents? **B01**
 - Which battalion had the lowest average incident resolution time? **B01**
 
-*Useful information*: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24-April-2022, this dataset is updated daily. 
+*Useful information*
+
+The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24-April-2022, this dataset is updated daily. 
 
 
 
