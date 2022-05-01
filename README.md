@@ -17,7 +17,7 @@ This repository contains my project for the completion of [Data Engineering Zoom
 
 A fire incident is defined as an incident involving smoke, heat, and flames. 
 
-The purpose of this simple project was to analyse the fire incidents dataset from the city of San Francisco in the US and answer the following questions:
+The purpose of this simple project was to analyse the fire incidents dataset from the city of San Francisco (USA) and answer the following questions:
 
 - Which battalion responded to more fire incidents?
 - What was the total number of fire incidents recorded?
@@ -44,13 +44,13 @@ It is available for [download as a csv file](https://data.sfgov.org/api/views/wr
 # Technologies Used
 
 For this project I decided to use the following tools:
-- Infrastructure as code (IaC): Terraform
-- Workflow orchestration: Airflow
-- Containerization: Docker
-- Data Lake: Google Cloud Storage (GCS)
-- Data Warehouse: BigQuery
-- Transformations: SQL (Pyspark will be used in the future with more time and one less technical error!) 
-- Visualization: Google Data Studio
+- **Infrastructure as code (IaC):** Terraform
+- **Workflow orchestration:** Airflow
+- **Containerization:** Docker
+- **Data Lake:** Google Cloud Storage (GCS)
+- **Data Warehouse:** BigQuery
+- **Transformations:** SQL (Pyspark will be used in the future with more time and one less technical error!) 
+- **Visualization:** Google Data Studio
 
 # Steps for Project Reproduction
 
@@ -89,7 +89,7 @@ terraform apply -var="project=<your-gcp-project-id>"
 ```
 - Confirm in GCP console that the infrastructure was correctly created
 
-## Step 4: Use of `DockerFile` and `Docker-Compose` structure to run Airflow.
+## Step 4: Use of DockerFile and Docker-Compose structure to run Airflow.
 
 ### Execution
 
@@ -146,7 +146,7 @@ The transformations made were the selection of certain columns and creation of n
 
 It is known that tables with less than 1 GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
 
-As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
+As of 24-April-2022, the dataset has a size of ~ 207 MB, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
 *Pratical example:*
 
