@@ -89,7 +89,7 @@ terraform apply -var="project=<your-gcp-project-id>"
 ```
 - Confirm in GCP console that the infrastructure was correctly created
 
-## Step 4: Use of `DockerFile` and `Docker-Compose` structure to run Airflow.
+## Step 4: Use of DockerFile and Docker-Compose structure to run Airflow.
 
 ### Execution
 
