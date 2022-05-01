@@ -17,7 +17,7 @@ This repository contains my project for the completion of [Data Engineering Zoom
 
 A fire incident is defined as an incident involving smoke, heat, and flames. 
 
-The purpose of this simple project was to analyse the fire incidents dataset from the city of San Francisco in the US and answer the following questions:
+The purpose of this simple project was to analyse the fire incidents dataset from the city of San Francisco (USA) and answer the following questions:
 
 - Which battalion responded to more fire incidents?
 - What was the total number of fire incidents recorded?
