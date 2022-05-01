@@ -71,7 +71,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.j
    * https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
 
 ## Step 3: Creation of a GCP Infrastructure
-- [Install Terraform] (https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - Change default variables "project", "region", "BQ_DATASET" in `variables.tf` (the file contains descriptions explaining these variables)
 - Run the following commands on bash:
 
@@ -87,26 +87,27 @@ terraform apply -var="project=<your-gcp-project-id>"
 ```
 - Confirm in GCP console that the infrastructure was correctly created
 
-**4.** Use of `DockerFile` and `Docker-Compose` structure to run Airflow.
+## Step 4: Use of `DockerFile` and `Docker-Compose` structure to run Airflow.
 
 ### Execution
-4.0. In `docker-compose.yaml`, change the environment variables `GCP_PROJECT_ID`,`GCP_GCS_BUCKET` and the line  `C:/Users/Gustavo/.google/credentials/:/.google/credentials:ro` regarding the volume to your own setup values. 
+
+**0.** In `docker-compose.yaml`, change the environment variables `GCP_PROJECT_ID`,`GCP_GCS_BUCKET` and the line  `C:/Users/Gustavo/.google/credentials/:/.google/credentials:ro` regarding the volume to your own setup values. 
 
 **1.** Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
 
-    ```bash
+    ```
     docker-compose build
     ```
     
 **2.** Initialize the configurations:
 
-    ```bash
+    ```
     docker-compose up airflow-init
     ```
     
 **3.** Run Airflow:
 
-    ```bash
+    ```
     docker-compose up -d
     ```
     
@@ -114,29 +115,34 @@ terraform apply -var="project=<your-gcp-project-id>"
 
 **5.** Turn on the DAG and trigger it on the web UI or wait for its scheduled run (once a day). After the run is completed, shut down the container by running the command:
 
-```bash
+```
 docker-compose down
 ```
 
 **[Extra Explanations](./airflow/extraexplanations.md)** (Summary of DAG of Data Pipeline and decisions regarding transformations)
 
-**5.**  
+## Step 5: Development of a visualization using Datastudio
+To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXhs), you need to use the data source `fire_used_variables` and `Add a field` (button on the bottom right corner) for the following fields:
+- `incident_month` with the formula `MONTH(Incident_Date)`
+- `avg_arrival_time_secs` with the formula `AVG(arrival_time_secs)`
+- `avg_resolution_time_secs` with the formula `AVG(resolution_time_secs)`
+
 
 # Dashboard
 
-![Dashboard](/imgs/dashboard.pdf)
+![Dashboard](/imgs/dashboard.png)
 
-I used Google Data Studio to create the dashboard. Take a look into the finished dashboard [here](DASHLINK).
+Take a look into the finished dashboard [here](https://datastudio.google.com/s/j2PER0kkXhs).
 
 # Conclusion 
 
 Solution for the questions:
-- Which battalion responded to more fire incidents?
-- What was the total number of fire incidents recorded?
-- How was the distribution of the number of fire incidents across time?
-- Which month registered the highest number of fire incidents?
-- Which battalion had the lowest average arrival time to the incidents?
-- Which battalion had the lowest average incident resolution time?
+- Which battalion responded to more fire incidents? B02
+- What was the total number of fire incidents recorded? 587868
+- How was the distribution of the number of fire incidents across time? (Check graphic on the dashboard)
+- Which month registered the highest number of fire incidents? January
+- Which battalion had the lowest average arrival time to the incidents? B01
+- Which battalion had the lowest average incident resolution time? B01
 
 Useful information: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24 of April of 2022, this dataset is updated daily. 
 
