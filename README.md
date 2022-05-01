@@ -9,6 +9,7 @@ This repository contains my project for the completion of [Data Engineering Zoom
 - [Dataset](#dataset)
 - [Technologies Used](#technologies-used)
 - [Steps for Project Reproduction](#steps-for-project-reproduction)
+- [Summary of DAG of Data Pipeline and decisions regarding transformations](#Summary-of-DAG-of-Data-Pipeline-and-decisions-regarding-transformations)
 - [Dashboard](#dashboard)
 - [Conclusion](#conclusion)
 
@@ -38,7 +39,7 @@ The chosen dataset was the fire incidents data of the city of San Francisco in t
 
 It includes a summary of each (non-medical) incident to which the SF Fire Department responded. Each incident record includes, the incident number, the battalion whihc responded to the incident, the incident date, the timestamp of alarm, arrival and closure of the incident, among others. 
 
-It is available for [download as a csv file] and for [consultation] where it is also provided a [data dictionary]. As of 24 of April of 2022, this dataset is updated daily.
+It is available for [download as a csv file]("https://data.sfgov.org/api/views/wr8u-xric/rows.csv?accessType=DOWNLOAD") and for [consultation](https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric) where it is also provided a [data dictionary](https://data.sfgov.org/api/views/wr8u-xric/files/54c601a2-63f1-4b27-a79d-f484c620f061?download=true&filename=FIR-0001_DataDictionary_fire-incidents.xlsx). As of 24 of April of 2022, this dataset is updated daily.
 
 # Technologies Used
 
@@ -53,7 +54,7 @@ For this project I decided to use the following tools:
 
 # Steps for Project Reproduction
 
-**Recommendation:** Clone of the repo for easier reproduction. Also, I used MINGW64 in Windows 10 as Bash.  
+**Recommendation:** Clone of the repo for easier reproduction and use MINGW64 in Windows 10 as Bash.  
 
 ## Step 1
 Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
@@ -127,6 +128,41 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 - `avg_arrival_time_secs` with the formula `AVG(arrival_time_secs)`
 - `avg_resolution_time_secs` with the formula `AVG(resolution_time_secs)`
 
+# Summary of DAG of Data Pipeline and decisions regarding transformations
+
+## Data Pipeline
+- Download of csv file containing the data;
+- Convertion of data from csv to parquet;
+- Upload of data to bucket in google cloud storage (data lake);
+- Load raw data to Bigquery - table `fire_external_table`;
+- Load transformed data to Bigquery - table `fire_used_variables`;
+- Delete used csv file (to free space in local storage)
+
+## Transformations
+
+The transformations made were the selection of certain columns and creation of new ones (time diferencies).
+
+It is known that tables with less than 1GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
+
+As of 24-April-22, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
+
+*Pratical example*
+Creating for example a clustered table by battalion...
+
+```sql
+CREATE OR REPLACE TABLE buoyant-valve-347911.fire_all.fire_battalion_clustered
+Cluster BY
+  Battalion AS
+SELECT * FROM buoyant-valve-347911.fire_all.fire_external_table;
+```
+
+...makes the query consume more data
+![Dashboard](/imgs/clustered_table.PNG)
+
+than performing it on the not clustered table.
+![Dashboard](/imgs/normal_table.PNG)
+
+
 
 # Dashboard
 
@@ -144,7 +180,7 @@ Solution for the questions:
 - Which battalion had the lowest average arrival time to the incidents? **B01**
 - Which battalion had the lowest average incident resolution time? **B01**
 
-Useful information: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24 of April of 2022, this dataset is updated daily. 
+*Useful information*: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24 of April of 2022, this dataset is updated daily. 
 
 
 **A special thank you to [DataTalks.Club](https://datatalks.club) for providing this incredible course! Also, thank you to the amazing slack community!**
