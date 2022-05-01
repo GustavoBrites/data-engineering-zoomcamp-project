@@ -44,13 +44,13 @@ It is available for [download as a csv file](https://data.sfgov.org/api/views/wr
 # Technologies Used
 
 For this project I decided to use the following tools:
-- Infrastructure as code (IaC): Terraform
-- Workflow orchestration: Airflow
-- Containerization: Docker
-- Data Lake: Google Cloud Storage (GCS)
-- Data Warehouse: BigQuery
-- Transformations: SQL (Pyspark will be used in the future with more time and one less technical error!) 
-- Visualization: Google Data Studio
+- **Infrastructure as code (IaC):** Terraform
+- **Workflow orchestration:** Airflow
+- **Containerization:** Docker
+- **Data Lake:** Google Cloud Storage (GCS)
+- **Data Warehouse:** BigQuery
+- **Transformations:** SQL (Pyspark will be used in the future with more time and one less technical error!) 
+- **Visualization:** Google Data Studio
 
 # Steps for Project Reproduction
 
