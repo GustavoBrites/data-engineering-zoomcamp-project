@@ -55,8 +55,10 @@ For this project I decided to use the following tools:
 
 **Recommendation:** Clone of the repo for easier reproduction. Also, I used MINGW64 in Windows 10 as Bash.  
 
-**1.** Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
-**2.** Setup of GCP  
+## Step 1
+Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
+## Step 2
+### Setup of GCP 
 - Creation of new GCP project. Attention: The Project ID is important. 
 - Go to `IAM & Admin > Service accounts > Create service account`, provide a service account name and grant the roles `Viewer`, `BigQuery Admin`, `Storage Admin`, `Storage Object Admin`. 
 - Download locally, rename it to `google_credentials.json`. 
