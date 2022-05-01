@@ -95,21 +95,21 @@ terraform apply -var="project=<your-gcp-project-id>"
 
 **1.** Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
 
-    ```
-    docker-compose build
-    ```
+```
+docker-compose build
+```
     
 **2.** Initialize the configurations:
 
-    ```
-    docker-compose up airflow-init
-    ```
+```
+docker-compose up airflow-init
+```
     
 **3.** Run Airflow:
 
-    ```
-    docker-compose up -d
-    ```
+```
+docker-compose up -d
+```
     
 **4.** Browse `localhost:8080` to access the Airflow web UI. The default credentials are `airflow`/`airflow` (not a production-ready setup). These can be modified by searching for `_AIRFLOW_WWW_USER_USERNAME` and `_AIRFLOW_WWW_USER_PASSWORD` inside the `docker-compose.yaml` file.
 
@@ -130,7 +130,7 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 
 # Dashboard
 
-![Dashboard](/imgs/dashboard.png)
+![Dashboard](/imgs/dashboard.PNG)
 
 Take a look into the finished dashboard [here](https://datastudio.google.com/s/j2PER0kkXhs).
 
