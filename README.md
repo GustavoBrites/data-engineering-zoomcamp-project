@@ -53,18 +53,10 @@ For this project I decided to use the following tools:
 
 # Steps for Project Reproduction (includes some explanations)
 
-*Pre-requirements* 
+**Recommendation:** Clone of the repo for easier reproduction. Also, I used MINGW64 in Windows 10 as Bash.  
 
-[Google Cloud Platform](https://cloud.google.com/) account.
-
-*Recommendation* 
-
-Clone of the repo for easier reproduction.  
-
-I used MINGW64 in Windows 10 as Bash. 
-
-The reproduction of the project can be divided in the following steps:
-
+1. Creation of a [Google Cloud Platform (GCP)](https://cloud.google.com/) account.
+2. 
 - Creation of new GCP project. Attention: The Project ID is important. 
 - Go to `IAM & Admin > Service accounts > Create service account`, provide a service account name and grant the roles `Viewer`, `BigQuery Admin`, `Storage Admin`, `Storage Object Admin`. 
 - Download locally, rename it to `google_credentials.json`. 
@@ -77,9 +69,50 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.j
    * https://console.cloud.google.com/apis/library/iam.googleapis.com
    * https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com
 
-Terraform:
-- [Install it] (https://learn.hashicorp.com/tutorials/terraform/install-cli)
+3. Creation of a GCP Infrastructure:
+- [Install Terraform] (https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - Change default variables "project", "region", "BQ_DATASET" in `variables.tf` (the file contains descriptions explaining these variables)
+- Run the following commands on bash:
+```shell
+# Refresh service-account's auth-token for this session
+gcloud auth application-default login
+
+# Initialize state file (.tfstate)
+terraform init
+
+# Check changes to new infra plan
+terraform plan -var="project=<your-gcp-project-id>"
+
+# Create new infra
+terraform apply -var="project=<your-gcp-project-id>"
+```
+- Confirm in GCP console that the infrastructure was correctly created
+
+4. Use of `DockerFile` and `Docker-Compose` structure to run Airflow.
+
+### Execution
+4.0. In `docker-compose.yaml`, change the environment variables `GCP_PROJECT_ID`,`GCP_GCS_BUCKET` and the line  `C:/Users/Gustavo/.google/credentials/:/.google/credentials:ro` regarding the volume to your own setup values. 
+
+4.1. Build the image (may take several minutes). You only need to run this command if you modified the Dockerfile or the `requirements.txt` file or if the first time you run Airflow. 
+    ```bash
+    docker-compose build
+    ```
+4.2. Initialize the configurations
+    ```bash
+    docker-compose up airflow-init
+    ```
+4.3. Run Airflow
+    ```bash
+    docker-compose up -d
+    ```
+4.4. Browse `localhost:8080` to access the Airflow web UI. The default credentials are `airflow`/`airflow` (not a production-ready setup). These can be modified by searching for `_AIRFLOW_WWW_USER_USERNAME` and `_AIRFLOW_WWW_USER_PASSWORD` inside the `docker-compose.yaml` file.
+
+4.5. Turn on the DAG and trigger it on the web UI or wait for its scheduled run (once a day). After the run is completed, shut down the container by running the command:
+```bash
+docker-compose down
+```
+**[Extra Explanations: Summary of DAG of Data Pipeline and decisions regarding transformations](./airflow/extraexplanations)**
+
 
 
 Data Pipeline:
@@ -87,8 +120,7 @@ Data Pipeline:
 
 
 
-Transformations:
-For this particular dataset it didn't make sense to use partitioning and clustering ([explanation])
+
 
 
 # Dashboard
