@@ -121,8 +121,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-**[Extra Explanations](./airflow/extraexplanations.md)** (Summary of DAG of Data Pipeline and decisions regarding transformations)
-
 ## Step 5: Development of a visualization using Datastudio
 To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXhs), you need to use the data source `fire_used_variables` and `Add a field` (button on the bottom right corner) for the following fields:
 - `incident_month` with the formula `MONTH(Incident_Date)`
