@@ -74,7 +74,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path/to/your/service-account-authkeys>.j
 - Change default variables "project", "region", "BQ_DATASET" in `variables.tf` (the file contains descriptions explaining these variables)
 - Run the following commands on bash:
 
-````shell
+```shell
 # Initialize state file (.tfstate)
 terraform init
 
