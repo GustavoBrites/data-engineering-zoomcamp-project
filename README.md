@@ -137,12 +137,12 @@ Take a look into the finished dashboard [here](https://datastudio.google.com/s/j
 # Conclusion 
 
 Solution for the questions:
-- Which battalion responded to more fire incidents? B02
-- What was the total number of fire incidents recorded? 587868
-- How was the distribution of the number of fire incidents across time? (Check graphic on the dashboard)
-- Which month registered the highest number of fire incidents? January
-- Which battalion had the lowest average arrival time to the incidents? B01
-- Which battalion had the lowest average incident resolution time? B01
+- Which battalion responded to more fire incidents? **B02**
+- What was the total number of fire incidents recorded? **587868**
+- How was the distribution of the number of fire incidents across time? **Check graph on the dashboard**
+- Which month registered the highest number of fire incidents? **January**
+- Which battalion had the lowest average arrival time to the incidents? **B01**
+- Which battalion had the lowest average incident resolution time? **B01**
 
 Useful information: The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24 of April of 2022, this dataset is updated daily. 
 
