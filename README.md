@@ -121,8 +121,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-**[Extra Explanations](./airflow/extraexplanations.md)** (Summary of DAG of Data Pipeline and decisions regarding transformations)
-
 ## Step 5: Development of a visualization using Datastudio
 To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXhs), you need to use the data source `fire_used_variables` and `Add a field` (button on the bottom right corner) for the following fields:
 - `incident_month` with the formula `MONTH(Incident_Date)`
@@ -144,13 +142,13 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 
 ## Transformations
 
-The transformations made were the selection of certain columns and creation of new ones (time diferencies).
+The transformations made were the selection of certain columns and creation of new ones (time differences).
 
 It is known that tables with less than 1 GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
 
 As of 24-April-2022, the dataset has a size of ~ 207 mb, thus I only performed transformations such as adding new variables, and not partitioning and clustering. 
 
-*Pratical example*
+*Pratical example:*
 
 Creating for example a clustered table by battalion...
 
@@ -161,11 +159,11 @@ Cluster BY
 SELECT * FROM buoyant-valve-347911.fire_all.fire_external_table;
 ```
 
-...makes the query consume more data
-![Dashboard](/imgs/clustered_table.PNG)
+...makes the query consume more data...
+![Dashboard](/imgs/clustered_table.jpg)
 
 than performing it on the not clustered table.
-![Dashboard](/imgs/normal_table.PNG)
+![Dashboard](/imgs/normal_table.jpg)
 
 
 
@@ -186,8 +184,7 @@ Solution for the questions:
 - Which battalion had the lowest average arrival time to the incidents? **B01**
 - Which battalion had the lowest average incident resolution time? **B01**
 
-*Useful information*
-
+*Useful information:*
 The dataset used for providing these solutions contained fire incidents from 1-Jan-2003 until 22-Apr-2022. As of 24-April-2022, this dataset is updated daily. 
 
 
