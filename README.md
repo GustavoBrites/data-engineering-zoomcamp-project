@@ -142,7 +142,7 @@ To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXh
 
 ## Transformations
 
-The transformations made were the selection of certain columns and creation of new ones (time diferencies).
+The transformations made were the selection of certain columns and creation of new ones (time differences).
 
 It is known that tables with less than 1 GB don't show significant improvement with partitioning and clustering; doing so in a small table could even lead to increased cost due to the additional metadata reads and maintenance needed for these features. 
 
