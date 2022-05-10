@@ -122,7 +122,7 @@ docker-compose down
 ```
 
 ## Step 5: Development of a visualization using Datastudio
-To create a dashboard like [this one](https://datastudio.google.com/s/j2PER0kkXhs), you need to use the data source `fire_used_variables` and `Add a field` (button on the bottom right corner) for the following fields:
+To create a dashboard like [this one](https://datastudio.google.com/reporting/3b54402a-5731-4a93-8519-f3da7e103055), you need to use the data source `fire_used_variables` and `Add a field` (button on the bottom right corner) for the following fields:
 - `incident_month` with the formula `MONTH(Incident_Date)`
 - `avg_arrival_time_secs` with the formula `AVG(arrival_time_secs)`
 - `avg_resolution_time_secs` with the formula `AVG(resolution_time_secs)`
@@ -169,7 +169,7 @@ than performing it on the not clustered table.
 
 # Dashboard
 
-Take a look into the finished dashboard [here](https://datastudio.google.com/s/j2PER0kkXhs).
+Take a look into the finished dashboard [here](https://datastudio.google.com/reporting/3b54402a-5731-4a93-8519-f3da7e103055).
 
 ![Dashboard](/imgs/dashboard.PNG)
 
